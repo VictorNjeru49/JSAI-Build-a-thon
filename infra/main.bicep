@@ -1,5 +1,5 @@
 targetScope = 'subscription'
-param webapiName string = 'webapi-rxyz'
+param webapiName string = 'webapi'
 param appServicePlanName string = 'appserviceplan'
 
 @minLength(1)
