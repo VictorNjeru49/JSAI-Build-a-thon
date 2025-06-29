@@ -1,5 +1,5 @@
 targetScope = 'subscription'
-param webapiName string = 'webapi'
+param webapiName string = 'webapi-victoenv'
 param appServicePlanName string = 'appserviceplan'
 
 @minLength(1)
@@ -12,7 +12,7 @@ param environmentName string
 param location string
 
 param rg string = ''
-param webappName string = 'webapp'
+param webappName string = 'webapi-victoenv'
 
 @description('Location for the Static Web App')
 @allowed(['westus2', 'centralus', 'eastus2', 'westeurope', 'eastasia', 'eastasiastage'])
@@ -55,7 +55,7 @@ module webapp 'br/public:avm/res/web/static-site:0.7.0' = {
     tags: union(tags, { 'azd-service-name': webappName })
     sku: 'Standard'
   }
-  
+
 }
 module serverfarm 'br/public:avm/res/web/serverfarm:0.4.1' = {
   name: 'appserviceplan'
@@ -72,7 +72,7 @@ module webapi 'br/public:avm/res/web/site:0.15.1' = {
   params: {
     kind: 'app'
     name: webapiName
-    tags: union(tags, { 'azd-service-name': 'webapi' })
+    tags: union(tags, { 'azd-service-name': 'webapi-victoenv' })
     serverFarmResourceId: serverfarm.outputs.resourceId
   }
 }
