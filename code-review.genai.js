@@ -1,3 +1,8 @@
+const githubToken = process.env.GITHUB_TOKEN;
+if (!githubToken) {
+  throw new Error("Missing GITHUB_TOKEN environment variable");
+}
+
 const changes = await git.diff({ staged: true });
 
 defDiff("CODE_CHANGES", changes, changes);
