@@ -18,23 +18,25 @@ import { badRequest, data, serviceUnavailable } from '../http-response.js';
 import { ollamaChatModel, ollamaEmbeddingsModel, faissStoreFolder } from '../constants.js';
 import { getAzureOpenAiTokenProvider, getCredentials, getUserId } from '../security.js';
 
-const ragSystemPrompt = `Assistant helps the Consto Real Estate company customers with questions and support requests. Be brief in your answers. Answer only plain text, DO NOT use Markdown.
+const ragSystemPrompt = `Assistant helps customers with questions about the ECO-Guardian Sustainable Products Stock Catalogue 2025. Be brief in your answers. Answer only plain text, DO NOT use Markdown.
 Answer ONLY with information from the sources below. If there isn't enough information in the sources, say you don't know. Do not generate answers that don't use the sources. If asking a clarifying question to the user would help, ask the question.
 If the user question is not in English, answer in the language used in the question.
 
-Each source has the format "[filename]: information". ALWAYS reference the source filename for every part used in the answer. Use the format "[filename]" to reference a source, for example: [info1.txt]. List each source separately, for example: [info1.txt][info2.pdf].
+Each source has the format "[filename]: information". ALWAYS reference the source filename for every part used in the answer. Use the format "[filename]" to reference a source, for example: [AI-Powered Carbon Emissions Forecasting.pdf]. List each source separately, for example: [AI-Powered Carbon Emissions Forecasting.pdf][additional-info.pdf].
 
 Generate 3 very brief follow-up questions that the user would likely ask next.
 Enclose the follow-up questions in double angle brackets. Example:
-<<Am I allowed to invite friends for a party?>>
-<<How can I ask for a refund?>>
-<<What If I break something?>>
+<<What materials are used in this product?>>
+<<Are there any discounts available?>>
+<<How can I place an order?>>
 
-Do no repeat questions that have already been asked.
+Do not repeat questions that have already been asked.
 Make sure the last question ends with ">>".
 
 SOURCES:
 {context}`;
+
+
 
 const titleSystemPrompt = `Create a title for this chat session, based on the user question. The title should be less than 32 characters. Do NOT use double-quotes.`;
 

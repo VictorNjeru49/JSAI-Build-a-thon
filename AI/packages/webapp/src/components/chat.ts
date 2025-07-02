@@ -39,9 +39,11 @@ export const chatDefaultOptions: ChatComponentOptions = {
   apiUrl: '',
   enablePromptSuggestions: true,
   promptSuggestions: [
-    'How to search and book rentals?',
-    'What is the refund policy?',
-    'How to contact a representative?',
+    'How can I track my carbon footprint?',
+    'What are some simple ways to reduce my environmental impact?',
+    'Can you suggest personalized sustainability tips?',
+    'How does EcoGuardian calculate my carbon footprint?',
+    'What actions can I take to live a more eco-friendly lifestyle?',
   ],
   messages: [],
   strings: {
@@ -57,6 +59,7 @@ export const chatDefaultOptions: ChatComponentOptions = {
     retryButton: 'Retry',
   },
 };
+
 
 /**
  * A chat component that allows the user to ask questions and get answers from an API.
